@@ -1,12 +1,5 @@
 # Diet App Backend
 
-Spring Boot + Java learning project for backend interviews.
-
-Current module:
-
-- Calorie target calculation using Strategy Pattern
-- Plain Java strategy interfaces for BMR and goal adjustment
-- Spring Boot only for dependency injection and REST API wiring
 
 ## Run Tests
 
