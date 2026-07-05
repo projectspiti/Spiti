@@ -1,6 +1,3 @@
-# Diet App Backend
-
-
 ## Run Tests
 
 ```powershell
@@ -11,7 +8,4 @@ mvn test
 
 ```powershell
 mvn spring-boot:run
-```
-
-
 ```
