@@ -13,20 +13,5 @@ mvn test
 mvn spring-boot:run
 ```
 
-## Sample API
 
-```http
-POST /api/calories/target
-Content-Type: application/json
-
-{
-  "age": 28,
-  "weightKg": 80,
-  "heightCm": 175,
-  "gender": "MALE",
-  "activityLevel": "MODERATE",
-  "goalType": "CUT",
-  "bodyFatPercentage": 20,
-  "medicalConditions": ["PCOS"]
-}
 ```
