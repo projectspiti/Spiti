@@ -1,10 +1,11 @@
 package com.dietapp.calorie.service;
 
+import org.springframework.stereotype.Component;
+
 import com.dietapp.calorie.model.UserProfile;
 import com.dietapp.calorie.strategy.bmr.BmrStrategy;
 import java.util.Comparator;
 import java.util.List;
-import org.springframework.stereotype.Component;
 
 @Component
 public class BmrStrategyResolver {

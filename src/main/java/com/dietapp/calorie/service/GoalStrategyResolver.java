@@ -1,11 +1,12 @@
 package com.dietapp.calorie.service;
 
+import org.springframework.stereotype.Component;
+
 import com.dietapp.calorie.model.GoalType;
 import com.dietapp.calorie.strategy.goal.GoalStrategy;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.stereotype.Component;
 
 @Component
 public class GoalStrategyResolver {

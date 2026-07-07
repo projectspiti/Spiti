@@ -1,5 +1,7 @@
 package com.dietapp.nutrition.factory;
 
+import org.springframework.stereotype.Component;
+
 import com.dietapp.nutrition.model.NutritionMode;
 import com.dietapp.nutrition.product.KitchenMenu;
 import com.dietapp.nutrition.product.MacroBlockSet;
@@ -9,7 +11,6 @@ import com.dietapp.nutrition.product.veg.VegMacroBlockSet;
 import com.dietapp.nutrition.product.veg.VegMealBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 @Component
 public class VegNutritionModeFactory implements NutritionModeFactory {

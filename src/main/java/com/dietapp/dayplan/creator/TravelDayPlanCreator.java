@@ -1,11 +1,12 @@
 package com.dietapp.dayplan.creator;
 
+import org.springframework.stereotype.Component;
+
 import com.dietapp.dayplan.fulfillment.DayFulfillment;
 import com.dietapp.dayplan.fulfillment.TravelDayFulfillment;
 import com.dietapp.dayplan.model.DayType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 @Component
 public class TravelDayPlanCreator extends DayPlanCreator {

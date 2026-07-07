@@ -1,7 +1,8 @@
 package com.dietapp.calorie.strategy.bmr;
 
-import com.dietapp.calorie.model.UserProfile;
 import org.springframework.stereotype.Component;
+
+import com.dietapp.calorie.model.UserProfile;
 
 @Component
 public class KatchMcArdleBmrStrategy implements BmrStrategy {

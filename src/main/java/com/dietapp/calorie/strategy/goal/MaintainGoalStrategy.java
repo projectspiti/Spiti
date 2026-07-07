@@ -1,7 +1,8 @@
 package com.dietapp.calorie.strategy.goal;
 
-import com.dietapp.calorie.model.GoalType;
 import org.springframework.stereotype.Component;
+
+import com.dietapp.calorie.model.GoalType;
 
 @Component
 public class MaintainGoalStrategy implements GoalStrategy {

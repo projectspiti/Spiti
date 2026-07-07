@@ -1,8 +1,9 @@
 package com.dietapp.calorie.strategy.bmr;
 
+import org.springframework.stereotype.Component;
+
 import com.dietapp.calorie.model.Gender;
 import com.dietapp.calorie.model.UserProfile;
-import org.springframework.stereotype.Component;
 
 @Component
 public class MifflinStJeorBmrStrategy implements BmrStrategy {

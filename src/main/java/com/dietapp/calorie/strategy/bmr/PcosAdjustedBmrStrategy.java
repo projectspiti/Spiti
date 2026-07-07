@@ -1,8 +1,9 @@
 package com.dietapp.calorie.strategy.bmr;
 
+import org.springframework.stereotype.Component;
+
 import com.dietapp.calorie.model.MedicalCondition;
 import com.dietapp.calorie.model.UserProfile;
-import org.springframework.stereotype.Component;
 
 @Component
 public class PcosAdjustedBmrStrategy implements BmrStrategy {
