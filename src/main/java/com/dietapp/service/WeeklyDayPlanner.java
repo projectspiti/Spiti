@@ -21,11 +21,9 @@ public class WeeklyDayPlanner {
 
     public WeeklyDayPlanner(List<DayPlanCreator> creators) {
         this.creatorsByDayType = new EnumMap<>(DayType.class);
-        log.info("Spring injected {} DayPlanCreator implementations", creators.size());
+        log.info("Loaded {} day plan rule providers", creators.size());
         for (DayPlanCreator creator : creators) {
-            log.info("registering {} for dayType={}",
-                    creator.getClass().getSimpleName(),
-                    creator.dayType());
+            log.info("Registered day plan rule provider dayType={}", creator.dayType());
             DayPlanCreator existingCreator = creatorsByDayType.put(creator.dayType(), creator);
             if (existingCreator != null) {
                 throw new IllegalStateException("Duplicate day plan creator for " + creator.dayType());
@@ -34,7 +32,7 @@ public class WeeklyDayPlanner {
     }
 
     public DayPlan createDayPlan(LocalDate date, DayType dayType, PriceTier priceTier) {
-        log.info("request received for date={}, dayType={}, priceTier={}",
+        log.info("Day plan requested date={}, dayType={}, priceTier={}",
                 date,
                 dayType,
                 priceTier);
@@ -42,7 +40,7 @@ public class WeeklyDayPlanner {
         if (creator == null) {
             throw new IllegalArgumentException("Unsupported day type: " + dayType);
         }
-        log.info("selected creator class={}", creator.getClass().getSimpleName());
+        log.info("Day plan rule provider selected dayType={}", dayType);
         return creator.createPlan(date, priceTier);
     }
 
@@ -51,7 +49,7 @@ public class WeeklyDayPlanner {
             throw new IllegalArgumentException("At least one day is required");
         }
 
-        log.info("creating weekly plan for {} day entries", days.size());
+        log.info("Creating weekly plan days={}", days.size());
         return days.stream()
                 .map(day -> createDayPlan(day.date(), day.dayType(), day.priceTier()))
                 .toList();

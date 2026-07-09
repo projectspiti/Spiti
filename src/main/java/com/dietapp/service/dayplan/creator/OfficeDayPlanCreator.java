@@ -20,7 +20,7 @@ public class OfficeDayPlanCreator extends DayPlanCreator {
 
     @Override
     protected DayFulfillment createFulfillment() {
-        log.info("OfficeDayPlanCreator.createFulfillment() called; creating OfficeDayFulfillment");
+        log.info("Selecting office meal fulfillment rules");
         return new OfficeDayFulfillment();
     }
 }

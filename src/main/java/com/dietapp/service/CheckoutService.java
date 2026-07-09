@@ -18,10 +18,11 @@ public class CheckoutService {
     }
 
     public CheckoutPaymentResponse createPayment(CheckoutPaymentRequest request) {
-        log.info("Adapter Pattern flow: CheckoutService depends on PaymentGateway interface, not Razorpay directly");
         validate(request);
+        log.info("Creating payment order orderId={}, userId={}, amountInRupees={}, paymentMethod={}",
+                request.orderId(), request.userId(), request.amountInRupees(), request.paymentMethod());
         CheckoutPaymentResponse response = paymentGateway.createPayment(request);
-        log.info("Adapter Pattern flow: CheckoutService received normalized payment response providerOrderId={}",
+        log.info("Payment order created providerOrderId={}",
                 response.providerOrderId());
         return response;
     }

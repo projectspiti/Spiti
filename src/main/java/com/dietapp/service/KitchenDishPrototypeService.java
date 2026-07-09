@@ -28,25 +28,26 @@ public class KitchenDishPrototypeService {
             String newDishName,
             int newBasePriceInRupees
     ) {
-        log.info("Prototype flow: kitchen admin requested duplicate sourceTemplateCode={}, newTemplateCode={}",
+        log.info("Kitchen admin duplicate dish requested sourceTemplateCode={}, newTemplateCode={}",
                 sourceTemplateCode, newTemplateCode);
 
         DishTemplate prototype = dishTemplateRepository.findPrototype(sourceTemplateCode);
-        log.info("Prototype flow: cloning prototype instead of building dish from scratch");
+        log.info("Creating dish copy from existing template sourceTemplateCode={}", sourceTemplateCode);
 
         DishTemplate duplicate = prototype.duplicateForAdmin(
                 newTemplateCode,
                 newDishName,
                 newBasePriceInRupees
         );
-        log.info("Prototype flow: duplicate created with copied ingredients={}, copied tags={}",
+        log.info("Dish copy prepared dishName={}, ingredients={}, tags={}",
+                duplicate.getDishName(),
                 duplicate.getIngredients(), duplicate.getTags());
 
         int finalPrice = pricingConfigService.finalPrice(
                 duplicate.getBasePriceInRupees(),
                 duplicate.getPriceTier()
         );
-        log.info("Prototype flow: response ready for duplicated dish={}, finalPrice={}",
+        log.info("Kitchen admin dish copy completed dishName={}, finalPrice={}",
                 duplicate.getDishName(), finalPrice);
 
         return DishTemplateCopy.from(sourceTemplateCode, duplicate, finalPrice);

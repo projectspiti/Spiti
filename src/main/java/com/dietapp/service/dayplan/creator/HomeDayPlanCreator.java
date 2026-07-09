@@ -20,7 +20,7 @@ public class HomeDayPlanCreator extends DayPlanCreator {
 
     @Override
     protected DayFulfillment createFulfillment() {
-        log.info("HomeDayPlanCreator.createFulfillment() called; creating HomeDayFulfillment");
+        log.info("Selecting home meal fulfillment rules");
         return new HomeDayFulfillment();
     }
 }

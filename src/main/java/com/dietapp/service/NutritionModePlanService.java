@@ -22,17 +22,18 @@ public class NutritionModePlanService {
     }
 
     public NutritionModePlan createNutritionModePlan(NutritionMode nutritionMode) {
-        log.info("creating nutrition mode plan for nutritionMode={}", nutritionMode);
+        log.info("Creating nutrition mode plan nutritionMode={}", nutritionMode);
         NutritionModeFactory factory = factoryResolver.resolve(nutritionMode);
 
         MealBuilder mealBuilder = factory.createMealBuilder();
         MacroBlockSet macroBlockSet = factory.createMacroBlockSet();
         KitchenMenu kitchenMenu = factory.createKitchenMenu();
 
-        log.info("created related object family: mealBuilder={}, macroBlockSet={}, kitchenMenu={}",
-                mealBuilder.getClass().getSimpleName(),
-                macroBlockSet.getClass().getSimpleName(),
-                kitchenMenu.getClass().getSimpleName());
+        log.info("Nutrition mode plan prepared nutritionMode={}, mealPlan={}, macroPlan={}, kitchenMenu={}",
+                nutritionMode,
+                mealBuilder.name(),
+                macroBlockSet.name(),
+                kitchenMenu.name());
 
         return new NutritionModePlan(
                 nutritionMode,

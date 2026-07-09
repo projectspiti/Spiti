@@ -41,16 +41,16 @@ public class DishTemplateRepository {
                         "Compartment box with sauce cup"
                 )
         );
-        log.info("Prototype flow: DishTemplateRepository initialized with {} prototype templates", templates.size());
+        log.info("Loaded {} dish templates for kitchen admin duplication", templates.size());
     }
 
     public DishTemplate findPrototype(String templateCode) {
-        log.info("Prototype flow: looking up prototype templateCode={}", templateCode);
+        log.info("Looking up dish template templateCode={}", templateCode);
         DishTemplate template = templates.get(templateCode);
         if (template == null) {
             throw new IllegalArgumentException("Unknown dish template: " + templateCode);
         }
-        log.info("Prototype flow: found prototype dishName={}, priceTier={}",
+        log.info("Found dish template dishName={}, priceTier={}",
                 template.getDishName(), template.getPriceTier());
         return template;
     }

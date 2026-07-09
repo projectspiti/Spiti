@@ -15,8 +15,6 @@ public abstract class DayPlanCreator {
     public abstract DayType dayType();
 
     public final DayPlan createPlan(LocalDate date, PriceTier priceTier) {
-        log.info("entered parent DayPlanCreator.createPlan using runtime creator={}",
-                getClass().getSimpleName());
         if (date == null) {
             throw new IllegalArgumentException("date is required");
         }
@@ -24,11 +22,9 @@ public abstract class DayPlanCreator {
             throw new IllegalArgumentException("priceTier is required");
         }
 
-        log.info("parent is about to call abstract createFulfillment(); subclass will decide object");
+        log.info("Creating day plan date={}, dayType={}, priceTier={}", date, dayType(), priceTier);
         DayFulfillment fulfillment = createFulfillment();
-        log.info("subclass returned concrete fulfillment={}",
-                fulfillment.getClass().getSimpleName());
-        log.info("building DayPlan from fulfillment rules: dayType={}, mealRule={}, packagingRule={}, deliveryRule={}",
+        log.info("Day fulfillment rules selected dayType={}, mealRule={}, packagingRule={}, deliveryRule={}",
                 fulfillment.dayType(),
                 fulfillment.mealRule(),
                 fulfillment.packagingRule(),

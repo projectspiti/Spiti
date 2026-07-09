@@ -18,15 +18,15 @@ public class PricingConfigService {
         tierMarkupInRupees.put(DishPriceTier.BUDGET, 0);
         tierMarkupInRupees.put(DishPriceTier.STANDARD, 40);
         tierMarkupInRupees.put(DishPriceTier.PREMIUM, 90);
-        log.info("Singleton flow: PricingConfigService created once by Spring with fixed tier markup config");
+        log.info("Loaded dish pricing tier markup config tiers={}", tierMarkupInRupees.keySet());
     }
 
     public int finalPrice(int basePriceInRupees, DishPriceTier priceTier) {
-        log.info("Singleton flow: PricingConfigService.finalPrice() called with basePrice={}, priceTier={}",
+        log.info("Calculating dish final price basePrice={}, priceTier={}",
                 basePriceInRupees, priceTier);
         int markup = tierMarkupInRupees.getOrDefault(priceTier, 0);
         int finalPrice = basePriceInRupees + markup;
-        log.info("Singleton flow: final price calculated as basePrice + markup = {} + {} = {}",
+        log.info("Dish final price calculated basePrice={}, markup={}, finalPrice={}",
                 basePriceInRupees, markup, finalPrice);
         return finalPrice;
     }

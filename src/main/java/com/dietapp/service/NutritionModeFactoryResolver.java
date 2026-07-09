@@ -19,11 +19,9 @@ public class NutritionModeFactoryResolver {
 
     public NutritionModeFactoryResolver(List<NutritionModeFactory> factories) {
         this.factoriesByMode = new EnumMap<>(NutritionMode.class);
-        log.info("Spring injected {} NutritionModeFactory implementations", factories.size());
+        log.info("Loaded {} nutrition mode providers", factories.size());
         for (NutritionModeFactory factory : factories) {
-            log.info("registering {} for nutritionMode={}",
-                    factory.getClass().getSimpleName(),
-                    factory.nutritionMode());
+            log.info("Registered nutrition mode provider nutritionMode={}", factory.nutritionMode());
             NutritionModeFactory existingFactory = factoriesByMode.put(factory.nutritionMode(), factory);
             if (existingFactory != null) {
                 throw new IllegalStateException("Duplicate nutrition mode factory for " + factory.nutritionMode());
@@ -32,12 +30,12 @@ public class NutritionModeFactoryResolver {
     }
 
     public NutritionModeFactory resolve(NutritionMode nutritionMode) {
-        log.info("resolving nutrition factory for nutritionMode={}", nutritionMode);
+        log.info("Resolving nutrition mode provider nutritionMode={}", nutritionMode);
         NutritionModeFactory factory = factoriesByMode.get(nutritionMode);
         if (factory == null) {
             throw new IllegalArgumentException("Unsupported nutrition mode: " + nutritionMode);
         }
-        log.info("selected nutrition factory class={}", factory.getClass().getSimpleName());
+        log.info("Nutrition mode provider selected nutritionMode={}", nutritionMode);
         return factory;
     }
 }

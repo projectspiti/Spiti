@@ -24,19 +24,19 @@ public class VegNutritionModeFactory implements NutritionModeFactory {
 
     @Override
     public MealBuilder createMealBuilder() {
-        log.info("VegNutritionModeFactory.createMealBuilder() -> VegMealBuilder");
+        log.info("Selecting vegetarian meal suggestions");
         return new VegMealBuilder();
     }
 
     @Override
     public MacroBlockSet createMacroBlockSet() {
-        log.info("VegNutritionModeFactory.createMacroBlockSet() -> VegMacroBlockSet");
+        log.info("Selecting vegetarian macro sources");
         return new VegMacroBlockSet();
     }
 
     @Override
     public KitchenMenu createKitchenMenu() {
-        log.info("VegNutritionModeFactory.createKitchenMenu() -> VegKitchenMenu");
+        log.info("Selecting vegetarian kitchen menu");
         return new VegKitchenMenu();
     }
 }

@@ -20,7 +20,7 @@ public class TravelDayPlanCreator extends DayPlanCreator {
 
     @Override
     protected DayFulfillment createFulfillment() {
-        log.info("TravelDayPlanCreator.createFulfillment() called; creating TravelDayFulfillment");
+        log.info("Selecting travel meal fulfillment rules");
         return new TravelDayFulfillment();
     }
 }

@@ -24,19 +24,19 @@ public class NonVegNutritionModeFactory implements NutritionModeFactory {
 
     @Override
     public MealBuilder createMealBuilder() {
-        log.info("NonVegNutritionModeFactory.createMealBuilder() -> NonVegMealBuilder");
+        log.info("Selecting non-vegetarian meal suggestions");
         return new NonVegMealBuilder();
     }
 
     @Override
     public MacroBlockSet createMacroBlockSet() {
-        log.info("NonVegNutritionModeFactory.createMacroBlockSet() -> NonVegMacroBlockSet");
+        log.info("Selecting non-vegetarian macro sources");
         return new NonVegMacroBlockSet();
     }
 
     @Override
     public KitchenMenu createKitchenMenu() {
-        log.info("NonVegNutritionModeFactory.createKitchenMenu() -> NonVegKitchenMenu");
+        log.info("Selecting non-vegetarian kitchen menu");
         return new NonVegKitchenMenu();
     }
 }

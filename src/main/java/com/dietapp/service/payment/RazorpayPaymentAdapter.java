@@ -19,16 +19,17 @@ public class RazorpayPaymentAdapter implements PaymentGateway {
 
     @Override
     public CheckoutPaymentResponse createPayment(CheckoutPaymentRequest request) {
-        log.info("Adapter Pattern flow: RazorpayPaymentAdapter received app request orderId={}, amountInRupees={}",
+        log.info("Sending payment order to provider provider=RAZORPAY, orderId={}, amountInRupees={}",
                 request.orderId(), request.amountInRupees());
 
         int amountInPaise = request.amountInRupees() * 100;
         String receiptId = request.orderId();
-        log.info("Adapter Pattern flow: adapter converting rupees to paise: {} -> {}",
+        log.info("Converted payment amount amountInRupees={}, amountInPaise={}",
                 request.amountInRupees(), amountInPaise);
 
         RazorpayOrder razorpayOrder = razorpayClient.createOrder(amountInPaise, "INR", receiptId);
-        log.info("Adapter Pattern flow: adapter converting RazorpayOrder to CheckoutPaymentResponse");
+        log.info("Payment provider order received provider=RAZORPAY, providerOrderId={}",
+                razorpayOrder.providerOrderId());
 
         return new CheckoutPaymentResponse(
                 request.orderId(),
@@ -37,7 +38,7 @@ public class RazorpayPaymentAdapter implements PaymentGateway {
                 PaymentStatus.CREATED,
                 razorpayOrder.paymentLink(),
                 "RAZORPAY",
-                "Payment order created through Razorpay adapter"
+                "Payment order created"
         );
     }
 }
