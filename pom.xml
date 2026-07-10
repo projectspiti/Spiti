@@ -15,7 +15,7 @@
     <artifactId>diet-app-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>diet-app-backend</name>
-    <description>Diet app backend learning project for Java LLD and HLD interviews</description>
+    <description>Diet app backend</description>
 
     <properties>
         <java.version>17</java.version>
